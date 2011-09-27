@@ -1,25 +1,33 @@
-# Compiled Runtime In Tcl
+# Tcl Stubs (Tables)
 
- *  This is version 3 of Critcl, with several new features, listed
-    below. This version has changes to public API which make it
-    incompatible with packages using Critcl version 2.x, or earlier.
+This project contains a set of (pure) Tcl packages for the handling of
+Tcl stubs table declarations. They provide functionality to:
 
-# Building Critcl
+ *  Parse stubs declarations (*.decls* files).
+ *  Represent stubs tables as Tcl objects (containers).
+ *  Generate a variety of C code from stubs tables.
+
+Historically speaking we have the **genStubs.tcl** application
+distributed with the Tcl core itself. The packages here are, in
+essence, (nearly) the same code, *just* sliced and diced into packages
+for easier reuse in other contexts which have to handle Tcl stubs
+tables. Like, for example, Jean-Claude Wippler's **critcl**
+application and package.
+
+For more information about the history and concepts behind Tcl's stub
+tables please read the package's documentation.
+
+# Installing the packages
 
  *  The toplevel directory contains a Tcl script **build.tcl** for
-    building and installing Critcl in various forms. Here we describe
-    only building and installation of the necessary packages, and the
-    creation of critcl starkits. For more information run
+    installing the packages (and adjunct application).
 
-    ```% ./build.tcl help```
-
- *  Building and installing the package, and its support:
+ * to install the packages simply run:
 
     ```% ./build.tcl install```
 
-    builds and installs the critcl package, and all supporting packages
-    in the **[info library]** directory of the **tclsh** found in PATH and
-    used to run build.tcl.
+    This installs the packages in the **[info library]** directory of
+    the **tclsh** found in PATH and used to run build.tcl.
 
     Explicitly using a specific **tclsh**, like
 
@@ -34,41 +42,15 @@
 
     will install all the packages there.
 
- *  Building a starkit is don via
+ *  To get online help, run
 
-    ```% ./build.tcl starkit```
-
-    This places the resulting file **critcl.kit** in the current
-    working directory.
-
-    Explicitly using a specific installation path, like
-
-    ```% ./build.tcl starkit /path/to/chosen/critcl.kit```
-
-    will put the generated starkit there.
-
-# New Features
-
- *  Here we provide only a short list of the features. For more details
-    see the 'Changes' sections in the reference manpages, or the files
-    "doc/include/changes\*.inc" which are the shared source of said
-    sections.
-
- *  Declaration, export and import of C-APIs through stubs tables.
-
- *  Generation of source packages from critcl-based code containing a
-    TEA-based buildsystem wrapped around the raw critcl.
-
- *  Declaration, initializaton and use of user-specified configuration
-    options. An important use is the declaration and use of custom
-    build configurations, like 'link a 3rd party library dynamically,
-    statically, build it from copy of its sources, etc.', etc.
+    ```% ./build.tcl help```
 
 # Documentation
 
- *  The source of the reference manpages for the main packages can be
+ *  The source of the reference manpages for the packages can be
     found in the sub-directory "doc/", with various (shared) text blocks
-    under "doc/include/". They written using 'doctools' markup (See
+    under "doc/include/". They are written using 'doctools' markup (See
     Tcllib's doctools packages). The files match the pattern
     "doc/\*.man", and "doc/include/\*.inc".
 
@@ -84,10 +66,3 @@
 
     The script used to (re)generate these files is "tools/makedoc.sh".
     It requires the **dtplite** application found in Tcllib.
-
-# History
-
- *  **2011-08-18** : Move code to public repository on GitHub
-
-    The Subversion repository at *svn://svn.equi4.com/critcl* is now obsolete.  
-    GitHub has the new official repository for Critcl.
